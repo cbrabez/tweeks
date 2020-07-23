@@ -1,0 +1,114 @@
+<app-top-menu></app-top-menu>
+
+<div class="container-fluid">
+    <div class="row">
+        <app-side-menu></app-side-menu>
+            <!-- Main content -->
+            <main role="main" class="col-md-9">
+                <h3>Tactics for the current week</h3>
+                <div id="week-wrapper">
+                    <div class="row">
+                <div class="column">
+                    <h5 class="weekly-heading">Monday</h5>
+                    <mat-selection-list class="taskList">
+                        <div *ngFor="let task of tasks | async">
+                            <mat-list-option *ngIf="task.day === 1" (click)="deleteTask(task)">
+                                {{task.title}}
+                                <!-- <mat-divider></mat-divider> -->
+                            </mat-list-option>
+                        </div>
+                    </mat-selection-list>
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Clearable input</mat-label>
+                        <input matInput type="text" #taskTitleMonday (keyup.enter)="addTask(taskTitleMonday.value, 1)">
+                        <button mat-button *ngIf="taskTitleMonday" matSuffix mat-icon-button aria-label="Clear" (click)="taskTitleMonday.value=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <div class="column">
+                    <h5 class="weekly-heading">Tuesday</h5>
+                        <mat-selection-list class="taskList">
+                            <div *ngFor="let task of tasks | async">
+                                <mat-list-option *ngIf="task.day === 2">
+                                {{task.title}}
+                                <!-- <mat-divider></mat-divider> -->
+                                </mat-list-option>
+                            </div>
+                          </mat-selection-list>
+                          <mat-form-field class="example-form-field">
+                            <mat-label>Clearable input</mat-label>
+                            <input matInput type="text" #taskTitleTuesday (keyup.enter)="addTask(taskTitleTuesday.value, 2)">
+                            <button mat-button *ngIf="taskTitleTuesday" matSuffix mat-icon-button aria-label="Clear" (click)="taskTitleTuesday.value=''">
+                              <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                </div>
+
+                <div class="column">
+                    <h5 class="weekly-heading">Wednesday</h5>
+                    <mat-selection-list class="taskList">
+                        <div *ngFor="let task of tasks | async">
+                            <mat-list-option *ngIf="task.day === 3">
+                            {{task.title}}
+                            <!-- <mat-divider></mat-divider> -->
+                            </mat-list-option>
+                        </div>
+                      </mat-selection-list>
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Clearable input</mat-label>
+                        <input matInput type="text" #taskTitleWednesday (keyup.enter)="addTask(taskTitleWednesday.value, 1)">
+                        <button mat-button *ngIf="taskTitleWednesday" matSuffix mat-icon-button aria-label="Clear" (click)="taskTitleWednesday.value=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <div class="column">
+                    <h5 class="weekly-heading">Thursday</h5>
+                    <mat-selection-list class="taskList">
+                        <div *ngFor="let task of tasks | async">
+                            <mat-list-option *ngIf="task.day === 4">
+                            {{task.title}}
+                            <!-- <mat-divider></mat-divider> -->
+                            </mat-list-option>
+                        </div>
+                      </mat-selection-list>
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Clearable input</mat-label>
+                        <input matInput type="text" #taskTitleThursday (keyup.enter)="addTask(taskTitleThursday.value, 1)">
+                        <button mat-button *ngIf="taskTitleThursday" matSuffix mat-icon-button aria-label="Clear" (click)="taskTitleThursday.value=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <div class="column">
+                    <h5 class="weekly-heading">Friday</h5>
+                    <mat-selection-list class="taskList">
+                        <div *ngFor="let task of tasks | async">
+                            <mat-list-option *ngIf="task.day === 5">
+                            {{task.title}}
+                            <!-- <mat-divider></mat-divider> -->
+                            </mat-list-option>
+                        </div>
+                      </mat-selection-list>
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Clearable input</mat-label>
+                        <input matInput type="text" #taskTitleFriday (keyup.enter)="addTask(taskTitleFriday.value, 1)">
+                        <button mat-button *ngIf="taskTitleFriday" matSuffix mat-icon-button aria-label="Clear" (click)="taskTitleFriday.value=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                </div>
+                <!-- <p>this week</p>
+            <ul>
+                <li class="flex-item" *ngFor="let task of tasksForCurrentWeek">{{ task.title }}</li>
+            </ul> -->
+            </div>        
+            </main>
+            
+    </div>
+</div>

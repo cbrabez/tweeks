@@ -1,0 +1,58 @@
+.flex-container {
+    /* We first create a flex layout context */
+    display: flex;
+    
+    /* Then we define the flow direction 
+       and if we allow the items to wrap 
+     * Remember this is the same as:
+     * flex-direction: row;
+     * flex-wrap: wrap;
+     */
+    flex-flow: row wrap;
+    
+    /* Then we define how is distributed the remaining space */
+    justify-content: space-around;
+    
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 20%;
+    // flex: 1;
+    padding-right: 3em;
+  }
+  
+  .flex-item {
+    background: tomato;
+    padding: 5px;
+    width: 130px;
+    // height: 2em;
+    margin-top: 10px;
+    line-height: 2em;
+    color: white;
+    // font-weight: bold;
+    // font-size: 0.5em;
+    text-align: center;
+    flex-grow: 1; 
+  }
+
+  .taskList mat-list-option {
+    height: auto;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }

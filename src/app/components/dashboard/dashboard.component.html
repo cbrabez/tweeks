@@ -1,0 +1,56 @@
+<!-- Top navigation -->
+
+<nav class="navbar navbar-expand navbar-dark bg-primary">
+  <div class="container">
+      <a class="navbar-brand">Angular Router</a>
+      <ul class="nav navbar-nav" routerLinkActive="active">
+          <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="courses">Courses</a></li>
+      </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <!-- sidenav -->
+<div class="row">
+  <app-side-menu></app-side-menu>
+  <!-- <div class="sidebar-wrapper col-md-3">
+    <ul class="list-group">
+      <a href="#" class="list-group-item list-group-item-action" routerLink="/current-week">
+        Current Week
+      </a>
+      <a href="#" class="list-group-item list-group-item-action" routerLink="/next-">
+        Next Week
+      </a>
+      <a href="#" class="list-group-item list-group-item-action active">
+        Managing Goals
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">
+        12 Week Overview
+      </a>
+    </ul>
+  </div> -->
+  <!-- end sidenav -->
+
+        <!-- Main content -->
+         <div class="col-md-9">
+            
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Title of your new Task" aria-label="title of new task" aria-describedby="basic-addon2" #taskTitle>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="addTask(taskTitle.value); clearTaskInput()" type="button">Add Task</button>
+                </div>
+              </div>
+            
+                  
+                      <h3>List of Tasks:</h3>
+                      <ul>
+                          <li *ngFor="let task of tasks | async">
+                            <input type="checkbox" class="form-check-input">{{ task.title }}
+                              <a (click)="deleteTask(task)"><fa-icon class="fa-times" [icon]="faTimes"></fa-icon></a>
+                          </li>
+                      </ul>
+        </div>  
+</div>
+</div>

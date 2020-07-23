@@ -1,0 +1,39 @@
+<app-top-menu></app-top-menu>
+
+<div class="container-fluid">
+  <div class="row">
+
+<app-side-menu></app-side-menu>
+        <!-- Main content -->
+        <main role="main" class="col-md-9">
+          <h2>Goals for the next 12 Weeks</h2>
+            
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Title of your Goal" aria-label="title of new goal" aria-describedby="basic-addon2" #goalTitle>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="addGoal(goalTitle.value)" type="button">Add Goal</button>
+                  </div>
+                </div>
+                    
+                    
+                        List of Goals:
+                        <ul>
+                            <li *ngFor="let goal of goals | async">
+                              <div>
+                                <input type="checkbox" class="form-check-input">{{ goal.title }}
+                              </div>
+                                <!-- <a (click)="deleteTask(task)"><fa-icon class="fa-times" [icon]="faTimes"></fa-icon></a> -->
+                                <textarea rows="7" cols="50" #goalDescription>
+                                  {{ goal.description }}
+                                  </textarea>
+                                  <button class="btn btn-outline-secondary" (click)="saveDescription(goal, goalDescription.value)" type="button">Save description</button>
+                            </li>
+                            
+                        </ul>
+                    
+                  
+          </main>
+  </div>
+</div>
+      
+      

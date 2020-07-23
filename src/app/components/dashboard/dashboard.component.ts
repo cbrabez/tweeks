@@ -1,48 +1,49 @@
-import { Component, NgModule } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component, OnInit, NgZone, NgModule } from '@angular/core';
+import { AuthService } from "../../shared/services/auth.service";
+import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
-import * as firebase from 'firebase/app';
-// var firebaseui = require('firebaseui');
+
+import { AngularFirestore } from 'angularfire2/firestore';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Task   } from './tasks/task';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { Task   } from '../../tasks/task';
+import { User } from '../../shared/services/user';
+import { TopMenuComponent } from '../navigation/top-menu/top-menu.component';
+import { SideMenuComponent } from '../navigation/side-menu/side-menu.component';
 
-  // Initialize the FirebaseUI Widget using Firebase.
-// var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-// ui.start('#firebaseui-auth-container', {
-//   signInOptions: [
-//     firebase.auth.EmailAuthProvider.PROVIDER_ID
-//   ],
-//   // Other config options...
-// });
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 
 @NgModule({
-  imports: [
-  ],
+  imports: [],
   declarations: [
+    TopMenuComponent,
+    SideMenuComponent
   ]
 })
 
-export class AppComponent {
+export class DashboardComponent implements OnInit {
   taskName: string;
   faTimes = faTimes;
+  faSignOutAlt = faSignOutAlt;
   db:AngularFirestore;
+  tasks: Observable<any[]>;
 
-
-tasks: Observable<any[]>;
-constructor(db: AngularFirestore) {
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    public ngZone: NgZone,
+    db: AngularFirestore
+  ) { 
     this.tasks = db.collection('tasks').valueChanges();
-    this.db = db; 
-  }
-  
+  this.db = db; 
+}
+
+  ngOnInit() { }
 
   addTask(title: string, day: number){
     let tasksCollection = this.db.collection<Task>('tasks');
@@ -70,4 +71,4 @@ constructor(db: AngularFirestore) {
     this.taskName = '';
   }
 
-  };
+}
